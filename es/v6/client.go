@@ -66,6 +66,8 @@ func (c *Client) DisableReallocation() error {
 	}
 	defer req.Body.Close()
 
+	req.Header.Set("Content-Type", "application/json")
+
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return errors.Wrap(err, "failed to execute DisableReallocation request")
@@ -96,6 +98,8 @@ func (c *Client) EnableReallocation() error {
 	}
 	defer req.Body.Close()
 
+	req.Header.Set("Content-Type", "application/json")
+
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return errors.Wrap(err, "failed to execute EnableReallocation request")
@@ -125,6 +129,8 @@ func (c *Client) ExcludeNodeFromAllocation(nodeName string) error {
 		return errors.Wrap(err, "failed to make ExcludeNodeFromAllocation request")
 	}
 	defer req.Body.Close()
+
+	req.Header.Set("Content-Type", "application/json")
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
